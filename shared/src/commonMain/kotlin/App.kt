@@ -42,7 +42,7 @@ fun App() {
             }
             AnimatedVisibility(showImage) {
                 KamelImage(
-                    asyncPainterResource("https://sebastianaigner.github.io/demo-image-api/pigeon/vladislav-nikonov-yVYaUSwkTOs-unsplash.jpg"),
+                    asyncPainterResource("https://sebi.io/demo-image-api/pigeon/vladislav-nikonov-yVYaUSwkTOs-unsplash.jpg"),
                     "Pigeon"
                 )
             }
@@ -50,17 +50,8 @@ fun App() {
     }
 }
 
-val httpClient = HttpClient {
-    install(ContentNegotiation) {
-        json()
-    }
-}
 
 
-suspend fun getImages(): List<BirdImage> {
-    val images = httpClient.get("http://sebi.io/demo-image-api/pictures.json")
-        .body<List<BirdImage>>()
-    return images
-}
+
 
 expect fun getPlatformName(): String
